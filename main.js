@@ -1,0 +1,23 @@
+const Discord = require('discord.js');
+const client = new Discord.Client();
+token = 'ODI4ODI3MTExNDQ3MTk5NzY4.YGvPZg.OVvIItRpGrez-KVQS5TrnguouH8';
+
+const prefix = '-';
+
+client.once('ready', () => {
+    console.log("I'm online !");
+});
+
+client.on('message', message => {
+    if (!message.content.startsWith(prefix) || message.author.bot)
+        return;
+
+    const args = message.content.slice(prefix.length).split(/ +/);
+    const command = args.shift().toLowerCase();
+
+    if (command === 'ping') {
+        message.channel.send('pong');
+    }
+});
+
+client.login(token);

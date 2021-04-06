@@ -1,0 +1,19 @@
+{
+  "name": "discord-tipsbot",
+  "version": "1.0.0",
+  "description": "",
+  "main": "main.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/VClone-bot/TIPSBot.git"
+  },
+  "author": "Barthet Virgile",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/VClone-bot/TIPSBot/issues"
+  },
+  "homepage": "https://github.com/VClone-bot/TIPSBot#readme"
+}

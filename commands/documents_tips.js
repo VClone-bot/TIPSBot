@@ -2,7 +2,7 @@ const Discord = require('discord.js');
 
 module.exports = {
     name: 'documents_tips',
-    aliases: ['statut', 'statuts', 'reglement_interieur', 'ri', 'rib', 'logo', 'documents', 'docs', 'ag', 'cr', 'procuration', 'procu', 'guide', 'facebook', 'fb', 'gazette', 'bertrand'],
+    aliases: ['statut', 'statuts', 'reglement_interieur', 'ri', 'rib', 'logo', 'documents', 'docs', 'ag', 'cr', 'procuration', 'procu', 'guide', 'facebook', 'fb', 'gazette', 'bertrand', 'agenda', 'site'],
     description: 'envoie les statuts et le règlement intérieur de la TIPS',
     async execute(client, message, args) {
 
@@ -19,6 +19,8 @@ module.exports = {
             .addField('Guide Discord TIPS', "[Lien vers le guide](https://drive.google.com/file/d/1DOQ8Uz2OtiZ7uA-KSe1zsSS_IO0ekKBG/view?usp=sharing)")
             .addField('Page Facebook TIPS', "[Lien vers la page FB](https://www.facebook.com/tips.improparissaclay)")
             .addField('Expression Libre pour la Gazette', "[Lien vers le Google Docs](https://docs.google.com/document/d/1Iu3p7Gm9H21O-w0eOIim_tldUZBMpa9U2BsxC4bqWMM/edit)")
+            .addField('Agenda Google pour les événements', "[Lien vers l'agenda](https://calendar.google.com/calendar/u/1?cid=NHZocWR2aXF1bDU4YW5vaThsYnUzZ2YwdjRAZ3JvdXAuY2FsZW5kYXIuZ29vZ2xlLmNvbQ)")
+            .addField('Site Internet de la TIPS', "Soon™")
 
         /** Send it */
         return message.channel.send(embedded_msg)

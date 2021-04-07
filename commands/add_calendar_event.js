@@ -7,7 +7,6 @@ module.exports = {
     async execute(client, message, args) {
 
         /** Monkecheck given arguments */
-        console.log(args);
         if (args.length < 3)
             return message.reply("trop peu d'arguments, la commande doit être utilisée ainsi: -adde <type d'événement (Match/Cabaret/Extérieur)> <jour de la semaine de l'événement> <date de l'événément au format JJ-MM-AAAA>");
 
@@ -49,8 +48,27 @@ module.exports = {
         var event_data = fs.readFileSync('./files/events.json');
         var events = JSON.parse(event_data);
 
+        /** Find unique ID that should be given to the event */
+        var next_id;
+        const keys = Object.keys(events);
+        var id_arr = [];
+        /** Build array containing all existing IDs */
+        for (const key of keys) {
+            for (const ev of events[key]) {
+                id_arr.push(ev.id);
+            }
+        }
+        /** Find lowest possible ID */
+        for (i = 0; i < 10000; i++) {
+            if (!id_arr.includes(`${i}`)) {
+                next_id = i;
+                break;
+            }
+        }
+
         /** Build the new event that'll be added to the JSON file */
         let new_event = {
+            id: `${next_id}`,
             name: `${event_name}`,
             date: `${args[1]} ${args[2]}`,
             lieu: `${event_place}`
@@ -71,9 +89,6 @@ module.exports = {
             // Error checking
             if (err) throw err;
         });
-
-        /** Close file */
-        fs.close(event_data);
 
         return message.channel.send("L'événement a bien été ajouté !");
     }

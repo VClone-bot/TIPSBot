@@ -7,7 +7,7 @@ module.exports = {
         /** Check if monke has sufficient privileges */
         if (message.member.roles.cache.has('828828294970605648') ||
             message.member.roles.cache.has('442464001264189450') ||
-            message.member.roles.cache.ahs('442430651514224640')) {
+            message.member.roles.cache.has('442430651514224640')) {
 
             /** Monkecheck args */
             if (!args[0]) return message.reply("la commande doit être utilisée ainsi: rmb <nombre de message à delete (max 10)>");
@@ -21,7 +21,7 @@ module.exports = {
                 message.channel.bulkDelete(messages);
             });
         } else {
-            return message.channel.reply('vous n\'avez pas les permissions pour exécuter cette commande');
+            message.reply('vous n\'avez pas des droits suffisants pour exécuter cette commande');
         }
     }
 }

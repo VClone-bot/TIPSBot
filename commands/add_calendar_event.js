@@ -9,7 +9,7 @@ module.exports = {
 
         if (message.member.roles.cache.has('828828294970605648') ||
             message.member.roles.cache.has('442464001264189450') ||
-            message.member.roles.cache.ahs('442430651514224640')) {
+            message.member.roles.cache.has('442430651514224640')) {
             /** Monkecheck given arguments */
             if (args.length < 3)
                 return message.reply("trop peu d'arguments, la commande doit être utilisée ainsi: -adde <type d'événement (Match/Cabaret/Extérieur)> <jour de la semaine de l'événement> <date de l'événément au format JJ-MM-AAAA>");
@@ -95,6 +95,8 @@ module.exports = {
             });
 
             return message.channel.send("L'événement a bien été ajouté !");
+        } else {
+            message.reply('vous n\'avez pas des droits suffisants pour exécuter cette commande');
         }
     }
 }

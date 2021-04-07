@@ -9,7 +9,7 @@ module.exports = {
     async execute(client, message, args) {
         if (message.member.roles.cache.has('828828294970605648') ||
             message.member.roles.cache.has('442464001264189450') ||
-            message.member.roles.cache.ahs('442430651514224640')) {
+            message.member.roles.cache.has('442430651514224640')) {
             /** Check args */
             if (args.length > 1) {
                 return message.reply('trop d\'arguments, la commande doit être utilisée ainsi: -clearev <argument de date optionnel au format JJ-MM-AAAA>');
@@ -69,6 +69,8 @@ module.exports = {
             });
 
             return message.channel.send("Le calendrier a bien été nettoyé !");
+        } else {
+            message.reply('vous n\'avez pas des droits suffisants pour exécuter cette commande');
         }
     }
 }

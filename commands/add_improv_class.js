@@ -69,22 +69,27 @@ module.exports = {
                 }
             }
 
-            /** Build the new class that'll be added to the JSON file */
-            let new_class = {
-                id: `${next_id}`,
-                name: `${args[0]}`,
-                date: `${args[1]} ${args[2]}`,
-                heure: `${args[3]}`,
-                lieu: `${class_place}`
-            }
+            class_name;
 
             /** Check in which category the class belongs, then insert it into the JSON javascript object */
             if (args[0].toLowerCase() == 'mardi') {
                 classes.Mardi.push(new_class);
+                class_name = "Cours Mardi Robin";
             } else if (args[0].toLowerCase() == 'jeudi') {
                 classes.Jeudi.push(new_class);
+                class_name = "Cours Jeudi Robin";
             } else {
                 classes.Gibbons.push(new_class);
+                class_name = "Cours Jeudi Gibbons";
+            }
+
+            /** Build the new class that'll be added to the JSON file */
+            let new_class = {
+                id: `${next_id}`,
+                name: `${class_name}`,
+                date: `${args[1]} ${args[2]}`,
+                heure: `${args[3]}`,
+                lieu: `${class_place}`
             }
 
             /** Convert JSON object to string and dump it in the file */

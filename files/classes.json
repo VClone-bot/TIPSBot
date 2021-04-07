@@ -1,0 +1,15 @@
+{
+    "Mardi": [
+        { "id": "0", "name": "Cours Robin Mardi", "date": "Mardi 20-04-2021", "heure": "19:30", "lieu": "Amphi Carton" },
+        { "id": "1", "name": "Cours Robin Mardi", "date": "Mardi 27-04-2021", "heure": "19:30", "lieu": "Amphi Carton" },
+        { "id": "3", "name": "Cours Robin Mardi", "date": "Mardi 04-05-2021", "heure": "19:30", "lieu": "Amphi Carton" }
+    ],
+    "Jeudi": [{ "id": "2", "name": "Cours Robin Jeudi", "date": "Jeudi 14-06-2021", "heure": "20:30", "lieu": "MAPS" }],
+    "Gibbons": [{
+        "id": "4",
+        "name": "Cours Jeudi Gibbons",
+        "date": "Jeudi 14-06-2021",
+        "heure": "19:30",
+        "lieu": "Bâtiment 450"
+    }]
+}

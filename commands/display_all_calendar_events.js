@@ -4,6 +4,7 @@ const fs = require('fs');
 module.exports = {
     name: 'display_all_calendar_events',
     aliases: ['dall', 'dates'],
+    cooldown: 5,
     async execute(client, message, args) {
 
         var match = true;

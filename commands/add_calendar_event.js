@@ -4,6 +4,7 @@ const Discord = require('discord.js')
 module.exports = {
     name: 'add_calendar_event',
     aliases: ['adde', 'add_event'],
+    cooldown: 2,
     async execute(client, message, args) {
 
         if (message.member.roles.cache.has('828828294970605648') ||

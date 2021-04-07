@@ -4,6 +4,7 @@ const fs = require('fs');
 module.exports = {
     name: 'display_next_calendar_events',
     aliases: ['devent', 'nextdates'],
+    cooldown: 5,
     async execute(client, message, args) {
 
         /** Fetch next events data from file */

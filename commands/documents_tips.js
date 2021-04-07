@@ -4,6 +4,7 @@ module.exports = {
     name: 'documents_tips',
     aliases: ['statut', 'statuts', 'reglement_interieur', 'ri', 'rib', 'logo', 'documents', 'docs', 'ag', 'cr', 'procuration', 'procu', 'guide', 'facebook', 'fb', 'gazette', 'bertrand', 'agenda', 'site'],
     description: 'envoie les statuts et le règlement intérieur de la TIPS',
+    cooldown: 5,
     async execute(client, message, args) {
 
         /** Build the embedded response */

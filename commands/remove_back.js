@@ -2,6 +2,7 @@ module.exports = {
     name: 'removeback',
     aliases: ['rmb', 'rmback'],
     description: 'this is a command to remove the n previous messages',
+    cooldown: 3,
     async execute(client, message, args) {
         /** Check if monke has sufficient privileges */
         if (message.member.roles.cache.has('828828294970605648') ||

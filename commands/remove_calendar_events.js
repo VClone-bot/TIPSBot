@@ -4,6 +4,7 @@ const fs = require('fs');
 module.exports = {
     name: 'remove_calendar_event',
     aliases: ['rme', 'remove_event'],
+    cooldown: 5,
     async execute(client, message, args) {
         if (message.member.roles.cache.has('828828294970605648') ||
             message.member.roles.cache.has('442464001264189450') ||

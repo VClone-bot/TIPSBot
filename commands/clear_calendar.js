@@ -5,14 +5,20 @@ module.exports = {
     name: 'clear_calendar',
     description: 'clear the event calendar of all past events, can receive a date argument to remove only events before a certain date, cannot remove future events',
     aliases: ['clearevents', 'clearev'],
+    cooldown: 15,
     async execute(client, message, args) {
         if (message.member.roles.cache.has('828828294970605648') ||
             message.member.roles.cache.has('442464001264189450') ||
             message.member.roles.cache.ahs('442430651514224640')) {
             /** Check args */
             if (args.length > 1) {
-                return message.reply('trop d\'arguments, la commande doit être utilisée ainsi: -clearev <argument de date optionnel au format JJ-MM-AAAA');
+                return message.reply('trop d\'arguments, la commande doit être utilisée ainsi: -clearev <argument de date optionnel au format JJ-MM-AAAA>');
             }
+
+            /** Regexp to match the DD-MM-YYYY date format */
+            const date_regexp = new RegExp('^(0?[1-9]|[12][0-9]|3[01])[-\\/ ]?(0?[1-9]|1[0-2])[-/ ]?(?:19|20)[0-9]{2}$');
+            if (!date_regexp.test(args[0]))
+                return message.reply("erreur: le format de date doit être JJ-MM-AAAA");
 
             var today;
             if (args.length > 0) {

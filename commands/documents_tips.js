@@ -21,6 +21,7 @@ module.exports = {
             .addField('Expression Libre pour la Gazette', "[Lien vers le Google Docs](https://docs.google.com/document/d/1Iu3p7Gm9H21O-w0eOIim_tldUZBMpa9U2BsxC4bqWMM/edit)")
             .addField('Agenda Google pour les événements', "[Lien vers l'agenda](https://calendar.google.com/calendar/u/1?cid=NHZocWR2aXF1bDU4YW5vaThsYnUzZ2YwdjRAZ3JvdXAuY2FsZW5kYXIuZ29vZ2xlLmNvbQ)")
             .addField('Site Internet de la TIPS', "Soon™")
+            .addField('Lien Github de ce bot', 'Later')
 
         /** Send it */
         return message.channel.send(embedded_msg)

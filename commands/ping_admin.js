@@ -5,7 +5,7 @@ module.exports = {
         if (message.member.roles.cache.has('828828294970605648')) {
             return message.channel.send('pong');
         } else {
-            return message.channel.send('Vous n\'avez pas les permissions pour exécuter cette commande');
+            return message.channel.reply('Vous n\'avez pas les permissions pour exécuter cette commande');
         }
     }
 }

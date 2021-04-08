@@ -29,7 +29,6 @@ module.exports = {
                 .addFields({ name: 'Oui', value: '👍', inline: true }, { name: 'Non', value: '👎', inline: true }, { name: 'Abstention', value: '🤷‍♀️', inline: true }, { name: 'NPPAV', value: '🏃‍♀️', inline: true })
 
             /** Send the response and add the possible reacts to it, delete the command message */
-            const filter = m => m.author.id === message.author.id
             message.channel.send(embedded_msg).then((msg) => {
                 msg.react('👍')
                     .then(() => msg.react('👎'))
@@ -70,8 +69,10 @@ module.exports = {
                                                 }
                                             }
                                         }
+                                        /** If author asked to close and there isn't too much votes poll isn't open anymore */
                                         poll_open = too_much_votes;
                                     } else {
+                                        /** If author didn't ask to close then simply go the next iteration */
                                         continue;
                                     }
                                 });

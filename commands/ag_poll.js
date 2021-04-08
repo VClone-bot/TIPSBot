@@ -38,8 +38,8 @@ module.exports = {
                     .then(() => message.delete())
                     .then(async() => {
                         var poll_open = true;
-                        var too_much_votes = false;
                         while (poll_open) {
+                            var too_much_votes = false;
                             /** Wait indefinitely for the monke to close the poll */
                             await message.channel.awaitMessages(filter, { max: 1 })
                                 .then((collected) => {
@@ -71,9 +71,6 @@ module.exports = {
                                         }
                                         /** If author asked to close and there isn't too much votes poll isn't open anymore */
                                         poll_open = too_much_votes;
-                                    } else {
-                                        /** If author didn't ask to close then simply go the next iteration */
-                                        continue;
                                     }
                                 });
                         }

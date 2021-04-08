@@ -1,4 +1,4 @@
-require('dotenv').config({ silent: process.env.NODE_ENV === 'production' })
+require('dotenv').config();
 const fs = require('fs');
 const cooldowns = new Map();
 const Discord = require('discord.js');

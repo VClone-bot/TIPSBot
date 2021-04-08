@@ -27,10 +27,10 @@ module.exports = {
                         var poll_open = true;
                         var reactmap = new Map();
                         const filter = m => m.author.id === message.author.id
-
+                        const fake_filter = m => true;
                         while (poll_open) {
                             //Wait for reactions to be put on the poll
-                            await msg.awaitReactions(true, { max: 1 })
+                            await msg.awaitReactions(fake_filter, { max: 1 })
                                 .then((collected) => {
                                     const reaction = collected.first();
                                     //Check if monke already reacted to the poll

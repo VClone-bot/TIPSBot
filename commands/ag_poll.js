@@ -34,7 +34,7 @@ module.exports = {
                     .then(() => msg.react('👎'))
                     .then(() => msg.react('🤷‍♀️'))
                     .then(() => msg.react('🏃‍♀️'))
-                    .then(() => message.reply('Utilisez la commande --close quand vous souhaiterez fermer le vote'))
+                    .then(() => message.reply('Utilisez la commande %close% quand vous souhaiterez fermer le vote'))
                     .then(() => message.delete())
                     .then(async() => {
                         var poll_open = true;
@@ -45,7 +45,7 @@ module.exports = {
                                 .then((collected) => {
                                     const authormessage = collected.first().content;
                                     /** If monke is closing the poll check that each monke only voted once if necessary */
-                                    if (authormessage == '--close') {
+                                    if (authormessage == '%close%') {
                                         if (nb_votes > 0) {
                                             /** Create Map containing every monke who reacted to the message, and the number of reactions */
                                             var reactmap = new Map();

@@ -23,7 +23,7 @@ module.exports = {
                     .then(() => msg.react('🤷‍♀️'))
                     .then(() => msg.react('🏃‍♀️'))
                     .then(() => message.delete())
-                    .then(() => {
+                    .then(async() => {
                         var poll_open = true;
                         var reactmap = new Map();
                         const filter = m => m.author.id === message.author.id

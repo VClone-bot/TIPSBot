@@ -16,9 +16,6 @@ module.exports = {
                 .setDescription(messageArgs)
                 .addFields({ name: 'Oui', value: '👍', inline: true }, { name: 'Non', value: '👎', inline: true }, { name: 'Abstention', value: '🤷‍♀️', inline: true }, { name: 'NPPAV', value: '🏃‍♀️', inline: true })
 
-            /** Filter to only process the monke's replies */
-            const filter = m => m.author.id === message.author.id
-
             /** Send the response and add the possible reacts to it, delete the command message */
             message.channel.send(embedded_msg).then((msg) => {
                 msg.react('👍')
@@ -42,6 +39,7 @@ module.exports = {
             var poll_open = true;
             var reactmap = new Map();
             const filter = m => m.author.id === message.author.id
+
             while (poll_open) {
                 //Wait for reactions to be put on the poll
                 await msg.awaitReactions(true, { max: 1 })

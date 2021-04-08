@@ -42,8 +42,8 @@ module.exports = {
                 return message.reply("erreur: le format de date doit être JJ-MM-AAAA");
 
             /** Regexp to match the HH:MM hour format */
-            const date_regexp = new RegExp('^([0-9]{2}[:|h][0-9]{2})$');
-            if (!date_regexp.test(args[3]))
+            const hour_regexp = new RegExp('^([0-9]{2}[:|h][0-9]{2})$');
+            if (!hour_regexp.test(args[3]))
                 return message.reply("erreur: le format horaire doit être HH:MM");
 
             /** Read JSON data and convert it to a json javascript object */

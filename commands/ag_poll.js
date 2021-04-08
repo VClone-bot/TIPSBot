@@ -8,6 +8,18 @@ module.exports = {
         if (message.member.roles.cache.has('828828294970605648') ||
             message.member.roles.cache.has('442430651514224640')) {
 
+            /** Ask monke how many times can one monke vote on the poll */
+            const filter = m => m.author.id === message.author.id
+            var nb_votes = 0;
+            message.reply("Combien de votes possibles/personne ? (par défaut: infini)");
+            await message.channel.awaitMessages(filter, { max: 1 }).then(collected => {
+                    reply = collected.first().content;
+                    if (!isNaN(reply)) nb_votes = parseInt(reply);
+                })
+                .catch(() => {
+                    message.channel.send("Timeout");
+                });
+
             /** Join all the arguments so we'll get the full text that Monke has sent, build the response accordingly */
             let messageArgs = args.join(' ');
             const embedded_msg = new Discord.MessageEmbed()
@@ -17,44 +29,50 @@ module.exports = {
                 .addFields({ name: 'Oui', value: '👍', inline: true }, { name: 'Non', value: '👎', inline: true }, { name: 'Abstention', value: '🤷‍♀️', inline: true }, { name: 'NPPAV', value: '🏃‍♀️', inline: true })
 
             /** Send the response and add the possible reacts to it, delete the command message */
+            const filter = m => m.author.id === message.author.id
             message.channel.send(embedded_msg).then((msg) => {
                 msg.react('👍')
                     .then(() => msg.react('👎'))
                     .then(() => msg.react('🤷‍♀️'))
                     .then(() => msg.react('🏃‍♀️'))
+                    .then(() => message.reply('Utilisez la commande --close quand vous souhaiterez fermer le vote'))
                     .then(() => message.delete())
                     .then(async() => {
                         var poll_open = true;
-                        var reactmap = new Map();
-                        const filter = m => m.author.id === message.author.id
-                        const fake_filter = m => true;
+                        var too_much_votes = false;
                         while (poll_open) {
-                            //Wait for reactions to be put on the poll
-                            await msg.awaitReactions(fake_filter, { max: 1 })
+                            /** Wait indefinitely for the monke to close the poll */
+                            await message.channel.awaitMessages(filter, { max: 1 })
                                 .then((collected) => {
-                                    const reaction = collected.first();
-                                    //Check if monke already reacted to the poll
-                                    if (reactmap.has(reaction.author.id)) {
-                                        //If he did check if the reaction is different from the old one
-                                        const old_react = reactmap.get(reaction.author.id);
-                                        if (!(reaction.emoji.name == old_react)) {
-                                            //If it isn't remove the old reaction
-                                            msg.reactions.cache.find(r => r.emoji.name == old_react).users.remove(reaction.author.id);
-                                            //Then change the reaction stored in the Map
-                                            reactmap.set(reaction.author.id, reaction.emoji.name);
-                                        } //If it's the same reaction then it doesn't matter because it means he removed the old one and added the same one again
+                                    const authormessage = collected.first().content;
+                                    /** If monke is closing the poll check that each monke only voted once if necessary */
+                                    if (authormessage == '--close') {
+                                        if (nb_votes > 0) {
+                                            /** Create Map containing every monke who reacted to the message, and the number of reactions */
+                                            var reactmap = new Map();
+                                            /** Iterate through all of the message's reactions */
+                                            for (const reaction of message.reactions.cache.each()) {
+                                                /** Iterate through all the monkes who put that specific react on the message, check that the author of the react isn't the bot itself too */
+                                                for (const user of reaction.users.cache.each()) {
+                                                    if (user.id != msg.author.id) {
+                                                        if (!reactmap.has(user.id)) {
+                                                            reactmap.set(user.id, 1);
+                                                        } else {
+                                                            reactmap.set(user.id, reactmap.get(user.id) + 1);
+                                                        }
+                                                    }
+                                                }
+                                            }
+                                            /** Then check that for every monke the number of reacts is < nb_votes */
+                                            for (const entry of reactmap) {
+                                                if (reactmap.get(entry) > nb_votes) {
+                                                    too_much_votes = true;
+                                                }
+                                            }
+                                        }
+                                        poll_open = too_much_votes;
                                     } else {
-                                        //If it's monke's first react we need to create a Map entry for him
-                                        reactmap.set(reaction.author.id, reaction.emoji.name);
-                                    }
-                                });
-                            //After processing the reaction, check if the original poster closed the poll
-                            await message.channel.awaitMessages(filter, { max: 1, time: 50 })
-                                .then((collected2) => {
-                                    const authormessage = collected2.first().content;
-                                    //If he did then close the poll, else continue
-                                    if (authormessage == 'close poll') {
-                                        poll_open = false;
+                                        continue;
                                     }
                                 });
                         }

@@ -1,19 +1,24 @@
 {
-  "name": "discord-tipsbot",
-  "version": "1.0.0",
-  "description": "",
-  "main": "main.js",
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
-  },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/VClone-bot/TIPSBot.git"
-  },
-  "author": "Barthet Virgile",
-  "license": "ISC",
-  "bugs": {
-    "url": "https://github.com/VClone-bot/TIPSBot/issues"
-  },
-  "homepage": "https://github.com/VClone-bot/TIPSBot#readme"
+    "name": "discord-tipsbot",
+    "version": "1.0.0",
+    "description": "",
+    "main": "main.js",
+    "scripts": {
+        "test": "echo \"Error: no test specified\" && exit 1"
+    },
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/VClone-bot/TIPSBot.git"
+    },
+    "author": "Barthet Virgile",
+    "license": "ISC",
+    "bugs": {
+        "url": "https://github.com/VClone-bot/TIPSBot/issues"
+    },
+    "homepage": "https://github.com/VClone-bot/TIPSBot#readme",
+    "dependencies": {
+        "discord.js": "^12.5.3",
+        "dotenv": "^8.1.4",
+        "fs": "0.0.1-security"
+    }
 }

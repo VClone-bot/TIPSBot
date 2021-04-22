@@ -7,7 +7,7 @@ module.exports = {
     description: 'tag un membre du discord aléatoire',
     async execute(client, message, args) {
 
-        var user = message.guild.members.cache;
+        var user = client.guild.members.cache;
         console.log(user);
         //message.reply(user.user.username);
     }

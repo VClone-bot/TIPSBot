@@ -9,6 +9,8 @@ module.exports = {
 
         /** Get the list of every tag-able user in the current channel */
         let members = message.channel.members;
-        console.log(members);
+        for (const member of members) {
+            console.log(member.user.username)
+        }
     }
 }

@@ -8,7 +8,7 @@ module.exports = {
     async execute(client, message, args) {
 
         /** Get the list of every tag-able user in the current channel */
-        const list = clients.guilds.cache.get("442109249389199362");
+        const list = client.guilds.cache.get("442109249389199362");
         list.members.cache.array().forEach(member => {
             console.log(member.tag)
         });
